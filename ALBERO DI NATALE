@@ -9,37 +9,49 @@ Questo script Python genera un albero di Natale testuale con decorazioni casuali
 - **Messaggi festivi**: Lo script aggiunge automaticamente messaggi di auguri alla base dell'albero.
 - **Compatibilità con Excel**: L'output è formattato per l'utilizzo in Excel, con righe separate da `CHAR(10)`.
 
-## 🚀 Esempio di Output
+## 💻 Script Python
 
-Ecco un esempio dell'output generato:
+Ecco lo script Python utilizzato per generare l'albero di Natale:
 
-![Albero di Natale Generato](image.png)
+```python
+import random
 
-> Nota: Assicurati che l'immagine `image.png` sia caricata nella root del repository GitHub.
+# Parametri dell'albero
+altezza = 10  # Altezza dell'albero
+tronco_altezza = 3  # Altezza del tronco
+tronco_larghezza = 3  # Larghezza del tronco
+decorazioni = ["O", "*", "@", "+"]  # Decorazioni casuali
 
-## 📋 Parametri principali
+# Funzione per aggiungere decorazioni casuali
+def decora(riga):
+    return "".join(
+        random.choice(decorazioni) if char == "*" and random.random() > 0.7 else char
+        for char in riga
+    )
 
-- `altezza`: l'altezza dell'albero (default: `10`).
-- `tronco_altezza`: il numero di righe del tronco (default: `3`).
-- `tronco_larghezza`: la larghezza del tronco (default: `3`).
-- `decorazioni`: un elenco di simboli utilizzati per decorare l'albero (default: `["O", "*", "@", "+"]`).
+# Costruzione dell'albero con una stella sulla cima
+albero = []
+albero.append(" " * (altezza - 1) + "★")  # Aggiungi una stella sulla cima
+for i in range(altezza):
+    spazi = " " * (altezza - i - 1)
+    stelle = "*" * (2 * i + 1)
+    riga_decorata = decora(spazi + stelle)
+    albero.append(riga_decorata)
 
-## 🔧 Personalizzazione
+# Costruzione del tronco
+tronco_spazi = " " * (altezza - tronco_larghezza // 2 - 1)
+for _ in range(tronco_altezza):
+    albero.append(tronco_spazi + "|" * tronco_larghezza)
 
-Puoi modificare i seguenti parametri per adattare l'output:
-- Cambia `altezza`, `tronco_altezza` o `tronco_larghezza` per modificare la struttura dell'albero.
-- Aggiungi nuovi simboli all'elenco `decorazioni` per rendere l'albero unico.
-- Personalizza i messaggi festivi nella sezione `auguri` per includere saluti personali.
+# Aggiungi un messaggio di auguri alla base
+auguri = [
+    " " * (altezza - 7) + "🎄🎄 Buon Natale a tutti! 🎄🎄",
+    " " * (altezza - 9) + "✨✨✨ e felice anno nuovo! ✨✨✨"
+]
+albero.extend(auguri)
 
-## 🧪 Requisiti
+# Unisci tutte le righe in una stringa separata da CHAR(10) per Excel
+output = "\n".join(albero)
 
-- Python 3.x
-- Nessuna dipendenza esterna
-
-## 📜 Licenza
-
-Questo progetto è distribuito sotto la licenza MIT. Sentiti libero di usarlo e modificarlo per scopi personali o professionali.
-
----
-
-Buon divertimento con il tuo albero di Natale virtuale! 🎅🎁
+# Restituisci il risultato come stringa con CHAR(10) per Excel
+print(output)
