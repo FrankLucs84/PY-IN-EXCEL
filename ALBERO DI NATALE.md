@@ -55,3 +55,35 @@ output = "\n".join(albero)
 
 # Restituisci il risultato come stringa con CHAR(10) per Excel
 print(output)
+```
+
+Ecco un esempio dell'output generato:
+
+![Albero di Natale Generato](image.png)
+
+## 📋 Parametri principali
+
+- `altezza`: l'altezza dell'albero (default: `10`).
+- `tronco_altezza`: il numero di righe del tronco (default: `3`).
+- `tronco_larghezza`: la larghezza del tronco (default: `3`).
+- `decorazioni`: un elenco di simboli utilizzati per decorare l'albero (default: `["O", "*", "@", "+"]`).
+
+## 🔧 Personalizzazione
+
+Puoi modificare i seguenti parametri per adattare l'output:
+- Cambia `altezza`, `tronco_altezza` o `tronco_larghezza` per modificare la struttura dell'albero.
+- Aggiungi nuovi simboli all'elenco `decorazioni` per rendere l'albero unico.
+- Personalizza i messaggi festivi nella sezione `auguri` per includere saluti personali.
+
+## 🧪 Requisiti
+
+- Python 3.x
+- Nessuna dipendenza esterna
+
+## 📜 Licenza
+
+Questo progetto è distribuito sotto la licenza MIT. Sentiti libero di usarlo e modificarlo per scopi personali o professionali.
+
+---
+
+Buon divertimento con il tuo albero di Natale virtuale! 🎅🎁
