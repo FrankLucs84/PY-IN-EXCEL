@@ -1,0 +1,41 @@
+import random
+
+# Parametri dell'albero
+altezza = 10  # Altezza dell'albero
+tronco_altezza = 3  # Altezza del tronco
+tronco_larghezza = 3  # Larghezza del tronco
+decorazioni = ["O", "*", "@", "+"]  # Decorazioni casuali
+
+# Funzione per aggiungere decorazioni casuali
+def decora(riga):
+    return "".join(
+        random.choice(decorazioni) if char == "*" and random.random() > 0.7 else char
+        for char in riga
+    )
+
+# Costruzione dell'albero con una stella sulla cima
+albero = []
+albero.append(" " * (altezza - 1) + "★")  # Aggiungi una stella sulla cima
+for i in range(altezza):
+    spazi = " " * (altezza - i - 1)
+    stelle = "*" * (2 * i + 1)
+    riga_decorata = decora(spazi + stelle)
+    albero.append(riga_decorata)
+
+# Costruzione del tronco
+tronco_spazi = " " * (altezza - tronco_larghezza // 2 - 1)
+for _ in range(tronco_altezza):
+    albero.append(tronco_spazi + "|" * tronco_larghezza)
+
+# Aggiungi un messaggio di auguri alla base
+auguri = [
+    " " * (altezza - 7) + "🎄🎄 Buon Natale a tutti! 🎄🎄",
+    " " * (altezza - 9) + "✨✨✨ e felice anno nuovo! ✨✨✨"
+]
+albero.extend(auguri)
+
+# Unisci tutte le righe in una stringa separata da CHAR(10) per Excel
+output = "\n".join(albero)
+
+# Restituisci il risultato come stringa con CHAR(10) per Excel
+output
