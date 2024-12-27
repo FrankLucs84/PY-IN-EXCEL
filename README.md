@@ -52,5 +52,3 @@ Ecco alcune delle librerie più comuni per lavorare con Excel in Python:
 5. **Analisi Avanzate**
    - Simulazioni, calcoli statistici e modellazione predittiva.
 
-```bash
-pip install openpyxl pandas xlwings pyxlsb matplotlib
